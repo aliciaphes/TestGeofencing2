@@ -82,7 +82,6 @@ public class MainActivity extends AppCompatActivity implements
 
         initializeGoogleMaps();
         createGoogleApiClient();
-        startGeofence();
     }
 
     private void createGoogleApiClient() {
@@ -119,6 +118,7 @@ public class MainActivity extends AppCompatActivity implements
                 geoFenceMarker.remove();
             }
             geoFenceMarker = map.addMarker(markerOptions);
+            startGeofence();
         }
     }
 
@@ -180,7 +180,7 @@ public class MainActivity extends AppCompatActivity implements
 
 
         boolean permissionGranted = (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED);
-        Toast.makeText(this, "getLastKnownLocation:" + (permissionGranted ? " permission granted" : " NOT ALLOWED"), Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "getLastKnownLocation:" + (permissionGranted ? " permission granted" : " NOT ALLOWED"), Toast.LENGTH_SHORT).show();
 
 
         lastLocation = LocationServices.FusedLocationApi.getLastLocation(googleApiClient);
@@ -216,7 +216,7 @@ public class MainActivity extends AppCompatActivity implements
 //        }
 
         boolean permissionGranted = (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED);
-        Toast.makeText(this, "startLocationUpdates:" + (permissionGranted ? " permission granted" : " NOT ALLOWED"), Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "startLocationUpdates:" + (permissionGranted ? " permission granted" : " NOT ALLOWED"), Toast.LENGTH_SHORT).show();
 
 
         LocationServices.FusedLocationApi.requestLocationUpdates(googleApiClient, locationRequest, this);
@@ -301,7 +301,7 @@ public class MainActivity extends AppCompatActivity implements
 //        }
 
         boolean permissionGranted = (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED);
-        Toast.makeText(this, "addGeofence:" + (permissionGranted ? " permission granted" : " NOT ALLOWED"), Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "addGeofence:" + (permissionGranted ? " permission granted" : " NOT ALLOWED"), Toast.LENGTH_SHORT).show();
 
         LocationServices.GeofencingApi.addGeofences(
                 googleApiClient,
